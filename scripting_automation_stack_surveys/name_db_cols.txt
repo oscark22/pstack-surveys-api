@@ -1,0 +1,29 @@
+-- Most Loved, Dreaded, and Wanted --
+
+@ Programming, scripting, and markup languages
+<= 2020: languageworkedwith | languagedesirenextyear
+>= 2021: languagehaveworkedwith | languagewanttoworkwith
+
+@ Databases
+>= 2021: DatabaseHaveWorkedWith | DatabaseWantToWorkWith
+<= 2020: databaseworkedwith | databasedesirenextyear
+
+@ Cloud platforms
+>= 2021: platformhaveworkedwith | platformwanttoworkwith (!!!)
+<= 2020: platformworkedwith | platformdesirenextyear (!!!)
+
+@ Web frameworks and technologies
+>= 2021: webframehaveworkedwith | webframewanttoworkwith
+<= 2020: webframeworkedwith | webframedesirenextyear
+2018: frameworkworkedwith | frameworkdesirenextyear
+
+-- Top paying technologies --
+
+@ Programming, Scripting, and Markup Languages
+>= 2021: 
+<= 2020: 
+
+-- Most popular technologies --
+
+@ Programming, Scripting, and Markup Languages
+
