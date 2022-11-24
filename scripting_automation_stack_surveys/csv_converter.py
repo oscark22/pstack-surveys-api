@@ -2,8 +2,9 @@ import csv
 import math
 
 
-filename = '../survey2018/survey_results_public.csv'
-with open(filename) as f:
+# Path of the stack survey's csv results doc.
+filename = ''
+with open(filename, encoding='utf-8') as f:
     reader = csv.reader(f)
     header = next(reader)
 
@@ -20,13 +21,13 @@ with open(filename) as f:
 res = []
 for i, col in enumerate(header):
     if not maxCharValues[i]:
-        res.append(f"{col} INT,")
+        res.append(f"{col} INTEGER,")
     else:
         rounded = math.ceil(maxCharValues[i] / 10) * 10
-        res.append(f"{col} CHAR({rounded}),")
+        res.append(f"{col} VARCHAR,")
 
-w_filename = 'result'
+# Insert the path of the output here.
+w_filename = ''
 with open(w_filename, 'w') as f:
     for line in res:
         f.write(f"{line}\n")
-    
