@@ -42,7 +42,6 @@ class MostLovedMigration(Migration):
         self.get_ocurrencies(data, have_worked_with, wanna_work_with, dreaded_count)
 
         try:
-            self.conn.autocommit = True
             cursor = self.conn.cursor()
             
             cursor.execute("INSERT INTO public.year (question_id, year) \
@@ -52,7 +51,6 @@ class MostLovedMigration(Migration):
             for item in have_worked_with:
                 total = have_worked_with[item]
                 loved = total - dreaded_count[item]
-                print(total, loved, item)
                 cursor.execute("INSERT INTO public.answer (year_id, name, total_responses, num_responses) \
                     VALUES (%s, %s, %s, %s)", (year_id, item, total, loved))
             print('Done 👍')
@@ -60,10 +58,7 @@ class MostLovedMigration(Migration):
             print('error executing the insert query')
             return psycopg2.Error
         finally:
-            # close conn
-            if self.conn:
-                cursor.close()
-                self.conn.close()
+            cursor.close()
 
     def insert_into_db(self, question_id, from_year, to_year, nameCol2021_1, nameCol2021_2, nameCol2020_1, nameCol2020_2):
         for year in range(from_year, to_year+1):
@@ -73,9 +68,9 @@ class MostLovedMigration(Migration):
             else:
                 data = self.get_data(f"SELECT string_to_array({nameCol2021_1}, ';') AS w1, string_to_array({nameCol2021_2}, ';') AS w2 FROM surveys.survey{year}")
 
-            # self.execute_insert_query(data, question_id, year)
+            self.execute_insert_query(data, question_id, year)
 
 
 if __name__ == '__main__':
     m = MostLovedMigration()
-    m.insert_into_db(9, 2018, 2022, 'webframehaveworkedwith', 'webframewanttoworkwith', 'webframeworkedwith', 'webframedesirenextyear')
+    # m.insert_into_db(6, 2018, 2022, 'DatabaseHaveWorkedWith', 'DatabaseWantToWorkWith', 'databaseworkedwith', 'databasedesirenextyear')

@@ -3,29 +3,27 @@ import psycopg2
 import os
 
 
-DB_USER = os.environ.get('DATABASE_NAME')
-DB_PASS = os.environ.get('DATABASE_PASSWORD')
+DB_USER = os.environ.get('DB_USER')
+DB_PASS = os.environ.get('DB_PASS')
 
 
 class Migration(ABC):
     def __init__(self):
         self.conn = self.connect_db()
-
+        self.conn.autocommit = True
+        
     def connect_db(self):
         return psycopg2.connect(
             user=DB_USER,
             password=DB_PASS,
             host="localhost",
             port="5432",
-            database="stack_db"
+            database="stack-db"
         )
 
     def get_data(self, query):
         data = []
-        # connect to postgresql
         try:
-            self.conn.autocommit = True
-
             cursor = self.conn.cursor()
             cursor.execute(query)
             data = cursor.fetchall()
@@ -33,10 +31,7 @@ class Migration(ABC):
             print('error getting data')
             return psycopg2.Error
         finally:
-            # close conn
-            if self.conn:
-                cursor.close()
-                self.conn.close()
+            cursor.close()
         return data
 
     @abstractmethod

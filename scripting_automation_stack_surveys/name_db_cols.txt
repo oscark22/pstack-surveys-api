@@ -1,8 +1,8 @@
 -- Most Loved, Dreaded, and Wanted --
 
 @ Programming, scripting, and markup languages
-<= 2020: languageworkedwith | languagedesirenextyear
 >= 2021: languagehaveworkedwith | languagewanttoworkwith
+<= 2020: languageworkedwith | languagedesirenextyear
 
 @ Databases
 >= 2021: DatabaseHaveWorkedWith | DatabaseWantToWorkWith
