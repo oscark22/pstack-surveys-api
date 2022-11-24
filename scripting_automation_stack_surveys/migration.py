@@ -3,7 +3,7 @@ import psycopg2
 import os
 
 
-DB_NAME = os.environ.get('DATABASE_NAME')
+DB_USER = os.environ.get('DATABASE_NAME')
 DB_PASS = os.environ.get('DATABASE_PASSWORD')
 
 
@@ -13,7 +13,7 @@ class Migration(ABC):
 
     def connect_db(self):
         return psycopg2.connect(
-            user=DB_NAME,
+            user=DB_USER,
             password=DB_PASS,
             host="localhost",
             port="5432",
